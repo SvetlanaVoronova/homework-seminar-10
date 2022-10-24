@@ -1,0 +1,31 @@
+# pafy pip install pafy pip install youtube-dl - возьмем две библиотеки
+import pafy
+
+
+print("Скрипт для скачивания видео")
+
+link_video = input("Вставьте адрес размещения видео в сети - ссылку: ")
+
+
+def download(link_video):                  # примет линк
+    try:                                   # для работы с исключениями
+        v = pafy.new(link_video)
+        streams = v.streams
+        available_streams = ()
+        count = 1
+
+        for stream in streams:
+            available_streams[count] = stream
+            print(f"{count}: {stream}")
+            count += 1
+
+        stream_count = int(input("Введите номер варианта качества видео: "))
+        d = strems[stream_count - 1].download()
+
+        print("Видео скачалось.")
+
+    except:
+        print("Ошибка, проверьте ссылку.")
+
+
+download(link_video)
